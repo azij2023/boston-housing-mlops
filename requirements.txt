@@ -24,13 +24,13 @@ jobs:
 
       - name: Run regression script
         run: python regression.py
-      - name: Upload models
-        uses: actions/upload-artifact@v4
+pytest:
+      - name: Run tests
+        run: |
+          pip install pytest
+          pytest tests/
+
+      - name: Upload model artifacts
+        uses: actions/upload-artifact@v3
         with:
-          name: trained-models
-          path: models/
-        name: Upload plots
-        uses: actions/upload-artifact@v4
-        with:
-        name: model-plots
-        path: plots/
+          name: regression-models
